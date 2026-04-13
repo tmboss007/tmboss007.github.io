@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sathwik — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #1D9E75;
+      --green-dark: #0F6E56;
+      --green-bg: #E1F5EE;
+      --green-text: #085041;
+      --purple-bg: #EEEDFE;
+      --purple-text: #3C3489;
+      --purple-border: #AFA9EC;
+      --purple-mid: #534AB7;
+      --blue-bg: #E6F1FB;
+      --blue-text: #185FA5;
+      --amber-bg: #FAEEDA;
+      --amber-text: #633806;
+      --amber-icon: #854F0B;
+      --teal-border: #9FE1CB;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f3;
+      --text: #1a1a1a;
+      --text-secondary: #6b6b6b;
+      --text-tertiary: #9b9b9b;
+      --border: rgba(0,0,0,0.12);
+      --border-hover: rgba(0,0,0,0.25);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --bg-secondary: #242424;
+        --text: #f0f0f0;
+        --text-secondary: #a0a0a0;
+        --text-tertiary: #6b6b6b;
+        --border: rgba(255,255,255,0.12);
+        --border-hover: rgba(255,255,255,0.25);
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    a { color: inherit; }
+    .container { max-width: 880px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3.5rem; }
+    .logo { font-size: 18px; font-weight: 500; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green-bg); color: var(--green-text);
+      font-size: 12px; font-weight: 500; padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 1rem;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+
+    /* Hero */
+    .hero { margin-bottom: 3.5rem; }
+    .hero h1 {
+      font-size: clamp(2rem, 5.5vw, 3.5rem);
+      font-weight: 500; line-height: 1.1;
+      letter-spacing: -1.5px; margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; max-width: 520px; margin-bottom: 2rem; }
+
+    /* Buttons */
+    .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--green); color: #fff; border: none;
+      padding: 10px 20px; border-radius: var(--radius-md);
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 0.5px solid var(--border-hover);
+      padding: 10px 20px; border-radius: var(--radius-md);
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-ghost:hover { background: var(--bg-secondary); }
+
+    /* Section label */
+    .sec-label {
+      font-size: 11px; font-weight: 500; color: var(--text-tertiary);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;
+    }
+
+    /* Skills chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 3.5rem; }
+    .chip {
+      padding: 6px 14px; border-radius: 20px; font-size: 13px;
+      border: 0.5px solid var(--border); color: var(--text-secondary);
+    }
+    .chip.py { background: var(--purple-bg); color: var(--purple-text); border-color: var(--purple-border); }
+    .chip.hl { background: var(--green-bg); color: var(--green-text); border-color: var(--teal-border); }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 12px; margin-bottom: 3.5rem; }
+    .timeline-item {
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.25rem;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .tl-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .tl-title { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+    .tl-sub { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+    .tl-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 8px; }
+
+    /* Certifications */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 3.5rem; }
+    .cert-card {
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .cert-card:hover { border-color: var(--border-hover); }
+    .cert-icon { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cert-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+    .cert-sub { font-size: 12px; color: var(--text-secondary); margin-bottom: 5px; }
+    .cert-link { font-size: 11px; color: var(--green); text-decoration: none; font-weight: 500; }
+    .cert-link:hover { text-decoration: underline; }
+    .cert-card.dashed { border: 0.5px dashed var(--border); background: var(--bg-secondary); }
+
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 3.5rem; }
+    .card {
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.25rem;
+    }
+    .card:hover { border-color: var(--border-hover); }
+    .card.featured { border: 2px solid #378ADD; }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+    .card-num { font-size: 11px; color: var(--text-tertiary); }
+    .card-status { font-size: 11px; padding: 3px 8px; border-radius: 10px; }
+    .card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+    .card p { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px; }
+    .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .tag { font-size: 11px; color: var(--text-secondary); background: var(--bg-secondary); padding: 2px 7px; border-radius: 4px; }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 3.5rem; }
+    .stat { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 1rem; text-align: center; }
+    .stat-num { font-size: 24px; font-weight: 500; color: var(--green); }
+    .stat-lbl { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+
+    /* CTA */
+    .cta { background: var(--bg-secondary); border-radius: var(--radius-lg); padding: 2rem; text-align: center; }
+    .cta h2 { font-size: 20px; font-weight: 500; margin-bottom: 0.5rem; }
+    .cta p { font-size: 13px; color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+    /* Contact links */
+    .contact-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius-md); padding: 9px 14px;
+      font-size: 13px; color: var(--text); text-decoration: none; font-weight: 500;
+    }
+    .contact-link:hover { border-color: var(--border-hover); }
+    .contact-link svg { flex-shrink: 0; }
+
+    section { margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <a class="logo" href="#">sathwik<span>.io</span></a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#education">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge"><span class="dot"></span> AIML Intern @ 3Skills</div>
+    <h1>Hi, I'm Sathwik.<br>I build with <span>AI & Python.</span></h1>
+    <p>Fresh out of secondary school with a passion for technology, AI, and building things that matter. Currently interning at 3Skills as an AIML intern and loving every bit of the journey.</p>
+    <div class="btns">
+      <a class="btn-primary" href="#projects">View my projects</a>
+      <a class="btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+
+  <!-- Education & Experience -->
+  <section id="education">
+    <div class="sec-label">Education & experience</div>
+  </section>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-icon" style="background:var(--purple-bg);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <div class="tl-title">AIML Intern</div>
+        <div class="tl-sub">3Skills</div>
+        <span class="tl-badge" style="background:var(--green-bg);color:var(--green-text);">Current</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-icon" style="background:var(--blue-bg);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div>
+        <div class="tl-title">12th standard — PCMB</div>
+        <div class="tl-sub">GPUC Brahmawara</div>
+        <span class="tl-badge" style="background:var(--purple-bg);color:var(--purple-text);">78% · Completed</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-icon" style="background:var(--green-bg);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div>
+        <div class="tl-title">10th standard — SSLC</div>
+        <div class="tl-sub">Balu Public School, Channapatana</div>
+        <span class="tl-badge" style="background:var(--green-bg);color:var(--green-text);">63.3% · Completed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <section>
+    <div class="sec-label">Skills & interests</div>
+  </section>
+  <div class="chips">
+    <span class="chip py">Python</span>
+    <span class="chip py">Django</span>
+    <span class="chip py">Machine learning</span>
+    <span class="chip py">AI / Deep learning</span>
+    <span class="chip hl">Web development</span>
+    <span class="chip hl">Open source</span>
+    <span class="chip">Cybersecurity</span>
+    <span class="chip">Cloud computing</span>
+    <span class="chip">Hackathons</span>
+  </div>
+
+  <!-- Certifications -->
+  <section>
+    <div class="sec-label">Certifications</div>
+  </section>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon" style="background:var(--amber-bg);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div>
+        <div class="cert-title">GUVI Certification</div>
+        <div class="cert-sub">Issued by GUVI · 2025</div>
+        <a class="cert-link" href="https://www.guvi.in/share-certificate/977t49Izq131XS1595" target="_blank">View certificate →</a>
+      </div>
+    </div>
+    <div class="cert-card dashed">
+      <div class="cert-icon" style="background:var(--bg);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div>
+        <div class="cert-title" style="color:var(--text-secondary);">More certifications</div>
+        <a class="cert-link" href="https://www.linkedin.com/in/sathwik-r-74750034a" target="_blank">View all on LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="sec-label">Projects</div>
+  </section>
+  <div class="projects-grid">
+    <div class="card">
+      <div class="card-top">
+        <span class="card-num">01</span>
+        <span class="card-status" style="background:var(--green-bg);color:var(--green-text);">Built</span>
+      </div>
+      <h3>Random password generator</h3>
+      <p>Generates strong, random passwords of any length using Python. Keeps accounts safe with unpredictable combinations.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">random</span><span class="tag">string</span></div>
+    </div>
+    <div class="card">
+      <div class="card-top">
+        <span class="card-num">02</span>
+        <span class="card-status" style="background:var(--green-bg);color:var(--green-text);">Built</span>
+      </div>
+      <h3>Sign up page</h3>
+      <p>A clean user registration page built with Python, handling form validation, input collection and user data flow.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">Forms</span></div>
+    </div>
+    <div class="card featured">
+      <div class="card-top">
+        <span class="card-num">03</span>
+        <span class="card-status" style="background:var(--amber-bg);color:var(--amber-text);">In progress</span>
+      </div>
+      <h3>Company website</h3>
+      <p>A full company website being built with Django — includes pages, routing, templates and backend logic.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">HTML/CSS</span></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section>
+    <div class="sec-label">By the numbers</div>
+  </section>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">3+</div><div class="stat-lbl">Projects built</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-lbl">Internship</div></div>
+    <div class="stat"><div class="stat-num">6+</div><div class="stat-lbl">Techs explored</div></div>
+  </div>
+
+  <!-- Contact -->
+  <section id="contact" class="cta">
+    <h2>Let's connect</h2>
+    <p>Whether it's a collab, internship, or just geeking out over tech — reach out!</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://github.com/tmboss007" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        tmboss007
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/sathwik-r-74750034a" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        Sathwik R
+      </a>
+      <a class="contact-link" href="mailto:bosssathwik007@gmail.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        bosssathwik007@gmail.com
+      </a>
+      <a class="contact-link" href="https://www.instagram.com/sathwik__0007" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        sathwik__0007
+      </a>
+      <a class="contact-link" href="https://wa.me/917019659837" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
