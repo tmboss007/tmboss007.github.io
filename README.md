@@ -1,4 +1,4 @@
-# Hi there, I'm Sathwik 👋
+# Hi there, I'm Sathwik R 👋
 
 ### 🚀 Developer | AI Enthusiast | UI Builder
 
