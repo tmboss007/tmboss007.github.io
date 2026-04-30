@@ -113,7 +113,7 @@ h2{font-size:2rem;font-weight:700;text-align:center;margin-bottom:12px}
 .card .desc{font-size:0.85rem;color:var(--muted-fg);margin-bottom:16px;line-height:1.5}
 .card .emoji{font-size:1.5rem;transition:transform 0.3s}
 .card:hover .emoji{animation:bounce 0.6s}
-.tech-tag{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--muted);color:var(--muted-fg);padding:4px 8px;border-radius:4px;display:inline-block;margin-right:6px;border:1px solid var(--border)}
+.tech-tag{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--muted);color:var(--muted-fg);padding:4px 8px;border-radius:4px;display:inline-block;margin-right:6px;border:1px solid var(--border);margin-bottom:6px;}
 
 /* Timeline */
 .timeline{max-width:700px;margin:0 auto;position:relative}
@@ -227,7 +227,7 @@ h1{font-size:2.5rem}
 <a href="#contact" class="btn-outline">Get in Touch <span class="suffix">→</span></a>
 </div>
 <div class="stats fade-up d4">
-<div><div class="num" data-count="3">0</div><div class="label">Projects</div></div>
+<div><div class="num" data-count="5">0</div><div class="label">Projects</div></div>
 <div><div class="num" data-count="2">0</div><div class="label">Certifications</div></div>
 <div><div class="num" data-count="1">0</div><div class="label">Internship</div></div>
 </div>
@@ -268,24 +268,52 @@ h1{font-size:2.5rem}
 <p class="section-sub"><span class="cmd">~/projects</span> $ ls -la</p>
 </div>
 <div class="cards">
+
+<!-- Project 1: Chinchan Core AI -->
+<div class="card glow-purple">
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="status status-built">Live</div><span class="emoji">🤖</span></div>
+<h3>Chinchan Core AI</h3>
+<p class="desc">An interactive AI companion featuring a dual-inference engine (Groq/Gemini), dynamic personas, and a responsive cyberpunk UI with automated rate-limiting.</p>
+<div style="margin-bottom: 12px;">
+<span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Gemini API</span><span class="tech-tag">Groq API</span>
+</div>
+<a href="https://chinchan-core-ai.streamlit.app" target="_blank" class="cert-link" style="color:var(--cyan)">Launch App →</a>
+</div>
+
+<!-- Project 2: Learnix -->
+<div class="card glow-pink">
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="status status-wip">MVP / In Progress</div><span class="emoji">📚</span></div>
+<h3>Learnix</h3>
+<p class="desc">An AI-powered EdTech platform helping students prep for BEPC/Bac exams with structured explanations, instant quizzes, and multi-language support.</p>
+<div style="margin-bottom: 12px;">
+<span class="tech-tag">JavaScript</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Claude AI</span>
+</div>
+</div>
+
+<!-- Project 3: Random Password Generator -->
 <div class="card glow-cyan">
 <div style="display:flex;justify-content:space-between;align-items:center"><div class="status status-built">Built</div><span class="emoji">🔐</span></div>
 <h3>Random Password Generator</h3>
 <p class="desc">A secure password generator built with Python that creates strong, random passwords with customizable length and character types.</p>
 <span class="tech-tag">Python</span>
 </div>
+
+<!-- Project 4: Sign Up Page -->
 <div class="card glow-purple">
 <div style="display:flex;justify-content:space-between;align-items:center"><div class="status status-built">Built</div><span class="emoji">📝</span></div>
 <h3>Sign Up Page</h3>
 <p class="desc">A user authentication sign-up page built with Python, featuring form validation and secure credential handling.</p>
 <span class="tech-tag">Python</span>
 </div>
+
+<!-- Project 5: Company Website -->
 <div class="card glow-green">
 <div style="display:flex;justify-content:space-between;align-items:center"><div class="status status-wip">In Progress</div><span class="emoji">🏢</span></div>
 <h3>Company Website</h3>
 <p class="desc">A full-featured business website currently being built using Django framework with dynamic content management.</p>
 <span class="tech-tag">Python</span><span class="tech-tag">Django</span>
 </div>
+
 </div>
 </div>
 </section>
