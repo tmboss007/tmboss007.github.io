@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sathwik R — Developer Portfolio</title>
-<meta name="description" content="Portfolio of Sathwik R — Student, AIML Intern & Python developer">
+<title>Sathwik R | AI Developer & Student Portfolio</title>
+<meta name="description" content="Portfolio of Sathwik R — 17-year-old AI developer, AIML Intern & Python enthusiast">
+
+<!-- Open Graph Tags for better sharing previews -->
+<meta property="og:title" content="Sathwik R | AI Developer & Student Portfolio">
+<meta property="og:description" content="AI/ML Intern & Python Developer focusing on innovative tech solutions.">
+<meta property="og:type" content="website">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -14,12 +20,29 @@
 --border:#1e2a3a;--cyan:#38d2dc;--purple:#9364dc;--pink:#dc5096;--green:#3cc878;
 --primary:#38d2dc;
 }
+html{
+scroll-behavior:smooth;
+scroll-padding-top: 80px; /* Prevents navbar from hiding section titles */
+}
 body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
 /* Grid bg */
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(30,42,58,0.3) 1px,transparent 1px),linear-gradient(90deg,rgba(30,42,58,0.3) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+
+/* Cursor Glow */
+.cursor-glow{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,rgba(56,210,220,0.12),transparent 70%);
+pointer-events:none;
+z-index:0;
+transform:translate(-50%,-50%);
+filter:blur(30px);
+transition:transform 0.05s linear;
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:8px}
@@ -49,7 +72,7 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;max-wid
 /* Sections */
 section{position:relative;z-index:1;padding:96px 0}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:80px;position:relative}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(28,35,51,0.5);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:9999px;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted-fg);margin-bottom:32px;transition:border-color 0.5s}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(28,35,51,0.5);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:9999px;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted-fg);margin-bottom:12px;transition:border-color 0.5s}
 .badge:hover{border-color:rgba(60,200,120,0.4)}
 .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
@@ -57,7 +80,7 @@ h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1.1;margin-bottom:
 .gradient-text{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .typing-line{font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:var(--muted-fg);max-width:600px;margin:0 auto 32px}
 .typing-cursor{animation:blink 1s step-end infinite;color:var(--primary)}
-.hero-desc{font-size:1rem;color:var(--muted-fg);max-width:550px;margin:0 auto 32px}
+.hero-desc{font-size:1rem;color:var(--muted-fg);max-width:600px;margin:0 auto 32px}
 .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .btn-primary{background:var(--primary);color:var(--bg);padding:12px 24px;border-radius:8px;font-weight:600;transition:all 0.3s;position:relative;overflow:hidden}
 .btn-primary:hover{box-shadow:0 0 25px rgba(56,210,220,0.4);transform:scale(1.05)}
@@ -93,7 +116,7 @@ h2{font-size:2rem;font-weight:700;text-align:center;margin-bottom:12px}
 .skill-pink{border-color:rgba(220,80,150,0.3);color:var(--pink)}.skill-pink:hover{background:rgba(220,80,150,0.1);border-color:rgba(220,80,150,0.6);box-shadow:0 0 15px rgba(220,80,150,0.2)}
 .skill-green{border-color:rgba(60,200,120,0.3);color:var(--green)}.skill-green:hover{background:rgba(60,200,120,0.1);border-color:rgba(60,200,120,0.6);box-shadow:0 0 15px rgba(60,200,120,0.2)}
 
-/* Cards */
+/* Cards & Video */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1000px;margin:0 auto}
 .card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.5s;position:relative;overflow:hidden;opacity:0;transform:translateY(40px)}
 .card.visible{opacity:1;transform:translateY(0)}
@@ -102,9 +125,13 @@ h2{font-size:2rem;font-weight:700;text-align:center;margin-bottom:12px}
 .card.glow-purple:hover{box-shadow:0 0 30px rgba(147,100,220,0.3);border-color:rgba(147,100,220,0.5)}
 .card.glow-pink:hover{box-shadow:0 0 30px rgba(220,80,150,0.3);border-color:rgba(220,80,150,0.5)}
 .card.glow-green:hover{box-shadow:0 0 30px rgba(60,200,120,0.3);border-color:rgba(60,200,120,0.5)}
-/* Shine effect */
 .card::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(56,210,220,0.03),transparent);transform:translateX(-100%);transition:transform 0.7s}
 .card:hover::before{transform:translateX(100%)}
+
+.video-box{margin-bottom:16px;border-radius:12px;overflow:hidden;border:1px solid rgba(56,210,220,0.2);box-shadow:0 0 20px rgba(56,210,220,0.08);}
+.video-box video{width:100%;display:block;border-radius:12px;transition:transform 0.5s ease;}
+.video-box:hover video{transform:scale(1.02);}
+
 .status{font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 12px;border-radius:9999px;border:1px solid;display:inline-block;margin-bottom:12px}
 .status-built{background:rgba(60,200,120,0.15);color:var(--green);border-color:rgba(60,200,120,0.3)}
 .status-wip{background:rgba(220,80,150,0.15);color:var(--pink);border-color:rgba(220,80,150,0.3);animation:pulse 2s infinite}
@@ -157,6 +184,10 @@ h2{font-size:2rem;font-weight:700;text-align:center;margin-bottom:12px}
 .contact-card .name{font-weight:600;font-size:14px}
 .contact-card .handle{font-size:11px;color:var(--muted-fg);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
+/* Floating Resume */
+.resume-float{position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,var(--cyan),var(--purple));padding:12px 18px;border-radius:999px;font-weight:700;color:white;z-index:999;box-shadow:0 0 25px rgba(56,210,220,0.35);transition:all 0.3s ease;}
+.resume-float:hover{transform:translateY(-4px) scale(1.05);}
+
 /* Footer */
 footer{border-top:1px solid var(--border);padding:32px 0;text-align:center;position:relative;z-index:1;overflow:hidden}
 footer::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(56,210,220,0.03),rgba(147,100,220,0.03),rgba(220,80,150,0.03))}
@@ -182,6 +213,7 @@ footer .cmd{color:var(--green)}
 #particles,#matrix{position:fixed;inset:0;z-index:0;pointer-events:none}
 #matrix{opacity:0.25}
 
+/* Mobile Tweaks */
 @media(max-width:768px){
 .nav-links{display:none}
 h1{font-size:2.5rem}
@@ -191,11 +223,16 @@ h1{font-size:2.5rem}
 .timeline-line,.tl-dot{display:none}
 .tl-content{margin-left:0}
 }
+@media(max-width:480px){
+#nowbuilding pre {font-size: 12px; line-height: 1.5;}
+}
 </style>
 </head>
 <body>
+
 <canvas id="matrix"></canvas>
 <canvas id="particles"></canvas>
+<div class="cursor-glow"></div>
 
 <nav id="navbar">
 <div class="inner">
@@ -216,12 +253,21 @@ h1{font-size:2.5rem}
 
 <section class="hero" id="about">
 <div class="container">
-<div class="fade-up"><div class="badge"><span class="dot"></span> AIML Intern @ 3Skills</div></div>
+<div class="fade-up">
+<div class="badge"><span class="dot"></span> AIML Intern @ 3Skills</div>
+</div>
+<div class="fade-up">
+<div class="badge" style="margin-top:12px; margin-bottom:32px;"><span class="dot" style="background:var(--cyan)"></span> Open for Internships • Bangalore / Remote</div>
+</div>
 <h1 class="fade-up d1">Hi, I'm <span class="gradient-text glitch-text" data-text="Sathwik" id="glitchName">Sathwik</span></h1>
 <div class="typing-line fade-up d2">
 <span style="color:var(--green)">&gt; </span><span id="typingText"></span><span class="typing-cursor">▊</span>
 </div>
-<p class="hero-desc fade-up d2">Student, tech enthusiast, and passionate about turning ideas into real-world applications.</p>
+<p class="hero-desc fade-up d2">
+17-year-old developer passionate about AI, automation, and futuristic web experiences. 
+Eagerly waiting to participate in hackathons, tech events, and collaborative innovation programs. 
+Currently available for internships — onsite in Bangalore or remote.
+</p>
 <div class="btns fade-up d3">
 <a href="#projects" class="btn-primary"><span class="prefix">./</span>View My Work</a>
 <a href="#contact" class="btn-outline">Get in Touch <span class="suffix">→</span></a>
@@ -269,11 +315,21 @@ h1{font-size:2.5rem}
 </div>
 <div class="cards">
 
-<!-- Project 1: Chinchan Core AI -->
+<!-- Project 1: Chinchan Core AI (With Video Showcase) -->
 <div class="card glow-purple">
-<div style="display:flex;justify-content:space-between;align-items:center"><div class="status status-built">Live</div><span class="emoji">🤖</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div class="status status-built">Live</div>
+<span class="emoji">🤖</span>
+</div>
 <h3>Chinchan Core AI</h3>
-<p class="desc">An interactive AI companion featuring a dual-inference engine (Groq/Gemini), dynamic personas, and a responsive cyberpunk UI with automated rate-limiting.</p>
+<p class="desc">
+An interactive AI companion featuring a dual-inference engine (Groq/Gemini), dynamic personas, and a responsive cyberpunk UI with automated rate-limiting.
+</p>
+<div class="video-box">
+<video controls autoplay muted loop playsinline>
+<source src="https://drive.google.com/uc?export=download&id=1--pb08XXpmJYvqCSi-VELzX_krwNZ62E" type="video/mp4">
+</video>
+</div>
 <div style="margin-bottom: 12px;">
 <span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Gemini API</span><span class="tech-tag">Groq API</span>
 </div>
@@ -284,7 +340,7 @@ h1{font-size:2.5rem}
 <div class="card glow-pink">
 <div style="display:flex;justify-content:space-between;align-items:center"><div class="status status-wip">MVP / In Progress</div><span class="emoji">📚</span></div>
 <h3>Learnix</h3>
-<p class="desc">An AI-powered EdTech platform helping students prep for BEPC/Bac exams with structured explanations, instant quizzes, and multi-language support.</p>
+<p class="desc">An AI-powered EdTech platform helping students prep for exams with structured explanations, instant quizzes, and multi-language support.</p>
 <div style="margin-bottom: 12px;">
 <span class="tech-tag">JavaScript</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Claude AI</span>
 </div>
@@ -314,6 +370,27 @@ h1{font-size:2.5rem}
 <span class="tech-tag">Python</span><span class="tech-tag">Django</span>
 </div>
 
+</div>
+</div>
+</section>
+
+<!-- Now Building Section -->
+<section id="nowbuilding">
+<div class="container">
+<div class="reveal-section">
+<h2>Now <span class="gradient-text">Building</span></h2>
+<p class="section-sub">
+<span class="cmd">~/current-work</span>
+</p>
+</div>
+<div class="card glow-green" style="max-width:800px;margin:auto;">
+<pre style="font-family:'JetBrains Mono',monospace;color:var(--green);white-space:pre-wrap;line-height:2;">
+> Currently Building:
+- Learnix AI
+- Chinchan Core AI v2
+- Django Company Website
+- AI Automation Projects
+</pre>
 </div>
 </div>
 </section>
@@ -370,6 +447,33 @@ h1{font-size:2.5rem}
 </div>
 </section>
 
+<!-- Hackathons Section -->
+<section id="hackathons">
+<div class="container">
+<div class="reveal-section">
+<h2><span class="gradient-text">Hackathons</span> & Tech Events</h2>
+<p class="section-sub">
+<span class="cmd">await</span> upcoming_opportunities();
+</p>
+</div>
+<div class="cards" style="max-width:800px;">
+<div class="card glow-cyan">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div class="status status-wip">Actively Exploring</div>
+<span class="emoji">🚀</span>
+</div>
+<h3>Hackathons & Innovation Events</h3>
+<p class="desc">
+I’m actively looking forward to participating in hackathons, AI innovation challenges, developer meetups, and tech events to collaborate, learn, and build impactful solutions with other developers.
+</p>
+<div style="margin-bottom:12px;">
+<span class="tech-tag">AI</span><span class="tech-tag">Hackathons</span><span class="tech-tag">Innovation</span><span class="tech-tag">Networking</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <section id="certs">
 <div class="container">
 <div class="reveal-section">
@@ -413,7 +517,7 @@ h1{font-size:2.5rem}
 <a class="contact-card" href="https://www.linkedin.com/in/sathwik-r-udupi-74750034a" target="_blank">
 <div class="icon">💼</div><div class="name">LinkedIn</div><div class="handle">Sathwik R</div>
 </a>
-<a class="contact-card" href="mailto:bosssathwik007@gmail.com">
+<a class="contact-card" href="mailto:bosssathwik007@gmail.com?subject=Portfolio%20Inquiry">
 <div class="icon">📧</div><div class="name">Email</div><div class="handle">bosssathwik007@gmail.com</div>
 </a>
 <a class="contact-card" href="https://www.instagram.com/sathwik__0007?igsh=NGdncGpjYjVtZXQ=" target="_blank">
@@ -432,7 +536,23 @@ h1{font-size:2.5rem}
 </div>
 </footer>
 
+<!-- Floating Resume Button -->
+<a href="https://drive.google.com/file/d/1KLGiKPJgISXJlPA01BvfD2Ss-WVq5DsN/view?usp=sharing" class="resume-float" target="_blank">
+📄 Resume
+</a>
+
 <script>
+// Cursor Glow logic (disabled on touch screens for better mobile experience)
+const glow = document.querySelector('.cursor-glow');
+if (window.matchMedia("(pointer: fine)").matches) {
+document.addEventListener('mousemove', (e) => {
+glow.style.left = e.clientX + 'px';
+glow.style.top = e.clientY + 'px';
+});
+} else {
+glow.style.display = 'none';
+}
+
 // Matrix rain
 const mc=document.getElementById('matrix'),mctx=mc.getContext('2d');
 function mresize(){mc.width=innerWidth;mc.height=innerHeight}mresize();
@@ -450,7 +570,7 @@ mctx.fillStyle=Math.random()>0.5?`rgba(56,210,220,${a})`:`rgba(60,200,120,${a})`
 mctx.fillText(ch,i*fs,drops[i]*fs);
 if(drops[i]*fs>mc.height&&Math.random()>0.975)drops[i]=0;
 drops[i]++;
-}},50);
+}},80); // Adjusted to 80ms for slightly better performance
 
 // Particles with mouse interaction
 const pc=document.getElementById('particles'),pctx=pc.getContext('2d');
